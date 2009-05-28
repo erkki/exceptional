@@ -82,7 +82,7 @@ module Exceptional
     def safe_session(session)
       result = {}
       session.instance_variables.each do |v|
-        next if v =~ /cgi/ || v =~ /db/ || v =~ /env/
+        next if v =~ /cgi/ || v =~ /db/ || v =~ /env/ || v =~ /request/
         var = v.sub("@","") # remove prepended @'s
         result[var] = session.instance_variable_get(v)
       end
